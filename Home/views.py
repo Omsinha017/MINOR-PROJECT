@@ -24,18 +24,21 @@ def about(request):
     return render(request,'Home/about.html',{})
 
 
-def search(request):
-    query=request.GET['query']
-    if len(query)>78 or len(query) == 0:
-        allPosts = Post.objects.none()
+def search_home(request):
+    if 'query' in request.GET:
+        query = request.GET['query']
+        if len(query)>78 or len(query) == 0:
+            allPosts = Post.objects.none()
+        else:
+            allPostsTitle = Post.objects.filter(title__icontains=query)
+            allPostsAuthor = Post.objects.filter(author__icontains=query)
+            allPostsContent = Post.objects.filter(content__icontains=query)
+            allPostsTags = Post.objects.filter(tags__icontains=query)
+            allPosts =  allPostsTitle.union(allPostsContent, allPostsAuthor, allPostsTags).order_by('-created_at')
+        context = {
+            'post': allPosts,
+            'query': query
+        }
+        return render(request,"Home/search.html",context)
     else:
-        allPostsTitle = Post.objects.filter(title__icontains=query)
-        allPostsAuthor = Post.objects.filter(author__icontains=query)
-        allPostsContent = Post.objects.filter(content__icontains=query)
-        allPostsTags = Post.objects.filter(tags__icontains=query)
-        allPosts =  allPostsTitle.union(allPostsContent, allPostsAuthor, allPostsTags).order_by('-created_at')
-    context = {
-        'post': allPosts,
-        'query': query
-    }
-    return render(request, 'Home/search.html', context)
+        return render(request,"Home/search_home.html")
