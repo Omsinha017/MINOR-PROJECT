@@ -1,0 +1,123 @@
+{% extends "base.html" %}
+{% block styling %}
+<style>
+    body{
+    background-image: linear-gradient(to right bottom,#d699ff,#7a00cc);
+    height: 97.2vh;
+}
+
+.contactbox{
+    width: 90%;
+    height: 90%;
+    box-shadow: 0 3rem 6rem rgba(#000,.7);
+    opacity: .75;
+    background: white;
+    color: #999;
+    top: 50%;
+    left: 50%;
+    position: absolute;
+    transform: translate(-50%,-50%);
+    box-sizing: border-box;
+    padding: 70px 30px;
+}
+
+
+h3{
+    margin: 0;
+    padding: 0 0;
+    text-align: center;
+    font-size: 35px;
+}
+
+.contactbox p{
+    margin: 0;
+    padding-left: 10px;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.contactbox input{
+  padding-left: 10px;
+    width: 50%;
+    margin-bottom: 10px;
+}
+
+.contactbox label{
+  padding-right: 10px;
+}
+
+.contactbox input[type="text"], input[type="email"],input[type="tel"]
+{
+    border-bottom: 2px solid #999;
+    background: transparent;
+    outline:#999;
+    height: 40px;
+    color: #999;
+    font-size: 16px;
+    border-radius: 30px;
+}
+.label-text{
+  width: 90%;
+  padding: 10px 10px;
+  border-bottom: 2px solid #999;
+    background: transparent;
+    outline:#999;
+    height: 80px;
+    color: #999;
+    font-size: 16px;
+    border-radius: 30px;
+    resize: none;
+}
+.contactbox button[type="submit"]
+{
+   margin-top: 10px;
+    border: none;
+    width: 100px;
+    outline: none;
+    height: 40px;
+    background-image: linear-gradient(to right bottom,#d699ff,#7a00cc);
+    color: #fff;
+    font-size: 18px;
+    border-radius: 20px;
+}
+.contactbox button[type="submit"]:hover
+{
+    cursor: pointer;
+    background: #ad33ff;
+    color: #fff;
+}
+</style>
+{% endblock %}
+{% block content %}
+
+<div class="contactbox">
+<h3>Contact Admin!!</h3>
+<form method="POST">
+{% csrf_token %}
+  <div class="form-group">
+    <label for="name">Enter Name : </label>
+    <input type="text" class="form-control" id="name" name="name" aria-describedby="name">
+  </div>
+
+  <div class="form-group">
+    <label for="email">Email address : </label>
+    <input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp">
+    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+  </div>
+
+  <div class="form-group">
+    <label for="phone">Phone Number : </label>
+    <input type="tel" class="form-control" id="phone" name="phone">
+  </div>
+
+  <div class="form-group">
+    <label for="content">Describe your issue :</label>
+    <textarea class="label-text" name="content" id="content" cols="30" rows="5"></textarea>
+  </div>
+
+
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+</div>
+
+{% endblock content %}

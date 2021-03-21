@@ -1,0 +1,130 @@
+{% extends 'base.html' %}
+{% block styling %}
+<style>
+    body{
+    background-image: linear-gradient(to right bottom,#d699ff,#7a00cc);
+    height: 97.2vh;
+}
+
+.Signupbox{
+    width: 350px;
+    height: 580px;
+    box-shadow: 0 3rem 6rem rgba(#000,.7);
+    opacity: .75;
+    background: white;
+    color: #999;
+    top: 50%;
+    left: 50%;
+    position: absolute;
+    transform: translate(-50%,-50%);
+    box-sizing: border-box;
+    padding: 70px 30px;
+}
+
+
+h2{
+    margin: 0;
+    padding: 0 0;
+    text-align: center;
+    font-size: 30px;
+}
+
+.Signupbox p{
+    margin: 0;
+    padding: 0;
+    font-weight: bold;
+}
+
+.Signupbox input{
+    width: 100%;
+    margin-bottom: 10px;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.Signupbox input[type="text"], input[type="password"], input[type="email"]
+{
+    border-bottom: 2px solid #999;
+    background: transparent;
+    outline:#999;
+    height: 40px;
+    color: #999;
+    font-size: 16px;
+    border-radius: 30px;
+}
+.button_pos {
+    text-align: center;
+    padding-top: 5px;
+}
+.Signupbox button[type="submit"]
+{
+    border: none;
+    width: 100px;
+    outline: none;
+    height: 40px;
+    background-image: linear-gradient(to right bottom,#d699ff,#7a00cc);
+    color: #fff;
+    font-size: 18px;
+    border-radius: 20px;
+}
+.Signupbox button[type="submit"]:hover
+{
+    cursor: pointer;
+    background: #ad33ff;
+    color: #fff;
+}
+.Signupbox a{
+    text-decoration: none;
+    font-size: 12px;
+    line-height: 20px;
+    color: darkgrey;
+}
+
+.Signupbox a:hover
+{
+    color: #ad33ff;
+}
+</style>
+{% endblock %}
+{% block content %}
+{% load socialaccount %}
+<div class="Signupbox">
+
+{% if reg_errors|length > 0 %}
+    {% for reg_error in reg_errors %}
+        <div>
+            <span>{{ reg_error }}</span>
+        </div>
+        <br>
+    {% endfor %}
+{% endif %}
+
+<h2>Sign up</h2>
+    <form method='post'>
+        {% csrf_token %}
+    <div class="form-group">
+        <label for="username">Username</label>
+        <input type="text" class="form-control" id="username" name="username" placeholder="Choose a unique username" required>
+    </div>
+    <div class="form-group">
+        <label for="email">Email address</label>
+        <input type="email" class="form-control" id="email" name="email" placeholder="name@example.com" required>
+    </div>
+    <div class="form-group">
+        <label for="pass1">Choose a password</label>
+        <input type="password" class="form-control" id="pass1" name="pass1" placeholder="Choose Your Password" required>
+    </div>
+    <div class="form-group">
+        <label for="pass2">Confirm Password</label>
+        <input type="password" class="form-control" id="pass2" name="pass2" placeholder="Enter your password again" required>
+    </div>
+    <div class="button_pos">
+    <button type="submit" class="btn btn-primary">Submit</button>
+    <p>OR</p>
+    <a href="{% provider_login_url 'google' %}"><i class="fa fa fa-google-plus-square" style="font-size:36px;padding-right: 1rem;color:#777"></i></a>
+    <a href="{% url 'social:begin' 'facebook' %}"><i class="fa fa-facebook-square" style="font-size:36px;padding-right: 1rem;color:#777"></i></a>
+</div>
+    </form>
+</div>
+
+{% endblock %}

@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block content %}
+
+    <header class="header">
+        <div class="header__logo-box">
+            <img src="/static/img/White.svg" alt="Logo" class="header__logo">
+        </div>
+        <div class="header__text-box">
+            <h1 class="heading-primary">
+                <span class="heading-primary--main">Welcome to We'll Be Fine</span>
+                <span class="heading-primary--sub">Hope Is Where the Heart Is</span>
+            </h1>
+        </div>
+    </header>
+
+    {% if request.user.is_aunthenticated %}
+         <li><a href="{% url 'posts:all' %}" class="btn btn-simple">View Posts</a></li>
+     {% else %}
+
+    {% endif %}
+
+{% endblock %}

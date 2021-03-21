@@ -1,0 +1,115 @@
+{% extends "base.html" %}
+{% block styling %}
+<style>
+    body{
+    background-image: linear-gradient(to right bottom,#d699ff,#7a00cc);
+    height: 97.2vh;
+}
+
+.loginbox{
+    width: 320px;
+    height: 460px;
+    box-shadow: 0 3rem 6rem rgba(#000,.7);
+    opacity: .75;
+    background: white;
+    color: #999;
+    top: 50%;
+    left: 50%;
+    position: absolute;
+    transform: translate(-50%,-50%);
+    box-sizing: border-box;
+    padding: 70px 30px;
+}
+
+
+h1{
+    margin: 0;
+    padding: 0 0 20px;
+    text-align: center;
+    font-size: 22px;
+}
+
+.loginbox p{
+    margin: 0;
+    padding: 0;
+    font-weight: bold;
+}
+
+.loginbox input{
+    width: 100%;
+    margin-bottom: 20px;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.loginbox input[type="text"], input[type="password"]
+{
+    border-bottom: 2px solid #999;
+    background: transparent;
+    outline:#999;
+    height: 40px;
+    color: #999;
+    font-size: 16px;
+    border-radius: 30px;
+}
+.center-button{
+    text-align: center;
+}
+.loginbox button[type="submit"]
+{
+    border: none;
+    width: 100px;
+    outline: none;
+    height: 40px;
+    background-image: linear-gradient(to right bottom,#d699ff,#7a00cc);
+    color: #fff;
+    font-size: 18px;
+    border-radius: 20px;
+}
+.loginbox button[type="submit"]:hover
+{
+    cursor: pointer;
+    background: #ad33ff;
+    color: #fff;
+}
+.loginbox a{
+    text-decoration: none;
+    font-size: 12px;
+    line-height: 20px;
+    color: darkgrey;
+}
+
+.loginbox a:hover
+{
+    color: #ad33ff;
+}
+</style>
+{% endblock %}
+{% block content %}
+{% load socialaccount %}
+<div class="loginbox">
+
+{% if login_error %}
+    <div>
+        <span>{{ login_error }}</span>
+    </div>
+    <br>
+{% endif %}
+
+<h1>Login Here</h1>
+<form method="POST" >
+    {% csrf_token %}
+    <p>Email</p>
+        <input type="text" name="email" placeholder="Enter Username">
+    <p>Password</p>
+        <input type="password" name="pass" placeholder="Enter Password">
+        <div class="center-button">
+    <button type="submit">Login</button><br>
+    <a href="{% url 'accounts:signup' %}">Don't have an account?</a>
+    <p>OR</p>
+    <a href="{% provider_login_url 'google' %}"><i class="fa fa fa-google-plus-square" style="font-size:36px;padding-right: 1rem;color:#777"></i></a>
+    <a href="{% url 'social:begin' 'facebook' %}"><i class="fa fa-facebook-square" style="font-size:36px;padding-right: 1rem;color:#777"></i></a>
+</div>
+</form>
+</div>
+{% endblock content %}

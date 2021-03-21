@@ -1,0 +1,120 @@
+{% extends "base.html" %}
+{% block styling %}
+<style>
+    body{
+    background-image: linear-gradient(to right bottom,#d699ff,#7a00cc);
+    height: 97.2vh;
+}
+
+.createbox{
+    width: 500px;
+    height: 580px;
+    box-shadow: 0 3rem 6rem rgba(#000,.7);
+    opacity: .75;
+    background: white;
+    color: #999;
+    top: 50%;
+    left: 50%;
+    position: absolute;
+    transform: translate(-50%,-50%);
+    box-sizing: border-box;
+    padding: 70px 30px;
+}
+
+
+h4{
+    margin: 0;
+    padding: 0 0;
+    text-align: center;
+    font-size: 30px;
+}
+
+.createbox p{
+    margin: 0;
+    padding: 0;
+    font-weight: bold;
+}
+
+.createbox input{
+    width: 100%;
+    margin-bottom: 10px;
+	padding-left: 5px;
+	padding-right: 5px;
+}
+
+.createbox input[type="text"]
+{
+    border-bottom: 2px solid #999;
+    background: transparent;
+    outline:#999;
+    height: 40px;
+    color: #999;
+    font-size: 16px;
+    border-radius: 30px;
+}
+.center-but{
+    text-align: center;
+    padding: 10px;
+    padding-top: 30px;
+}
+.createbox button[type="submit"]
+{
+    border: none;
+    width: 100px;
+    outline: none;
+    height: 40px;
+    background-image: linear-gradient(to right bottom,#d699ff,#7a00cc);
+    color: #fff;
+    font-size: 18px;
+    border-radius: 20px;
+}
+.createbox button[type="submit"]:hover
+{
+    cursor: pointer;
+    background: #ad33ff;
+    color: #fff;
+}
+.createbox a{
+    text-decoration: none;
+    font-size: 12px;
+    line-height: 20px;
+    color: darkgrey;
+}
+
+.createbox a:hover
+{
+    color: #ad33ff;
+}
+</style>
+{% endblock %}
+{% block content %}
+	<div class="createbox">
+		<h4>Create New Post</h4>
+			<form method="POST">
+				{% csrf_token %}
+				<div class="form-group">
+					<label for="name">Title</label>
+					<input type="text" class="form-control" id="title" name="title" aria-describedby="title">
+				</div>
+			
+				<div class="form-group">
+					<label for="name">Author</label>
+					<input type="text" class="form-control" id="author" name="author" aria-describedby="name">
+				</div>
+			
+				<div class="form-group">
+					<label for="name">Content</label>
+					<input type="text" class="form-control" id="content" name="content" aria-describedby="name">
+				</div>
+			
+				<div class="form-group">
+					<label for="name">Tags</label>
+					<input type="text" class="form-control" id="tags" name="tags" aria-describedby="name">
+				</div>
+                <div class="center-but">
+				<button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+			</form>
+	</div>
+{% endblock %}
+

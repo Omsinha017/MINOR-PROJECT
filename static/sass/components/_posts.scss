@@ -1,0 +1,49 @@
+.all-post{
+  position: relative;
+  padding:5rem 5rem;
+  @include respond(tab-port){
+      padding:3rem 1rem;
+  }
+}
+.post-one{
+  width: 75%;
+  margin: 0 auto;
+  box-shadow: 0 3rem 6rem rgba($color-black,.1);
+  background-color:rgba($color-white,.6);
+  border-radius: 3px;
+  padding: 5rem;
+  padding-left: 7rem;
+  // transform: skewX(-12deg);
+
+  @include respond(tab-port) {
+      width: 100%;
+      padding: 3rem;
+      padding-left: 5rem;
+  }
+
+  @include respond(phone) {
+     transform: skewX(0);
+  }
+  .heading-post{
+    font-size:1.5rem ;
+    font-weight:700;
+    margin-bottom: 0;
+    text-transform:uppercase;
+  }
+  .heading-title{
+    font-size: 1.2rem;
+    color: $color-grey-dark-2;
+  }
+  .links{
+    color: $color-grey-dark-2;
+  }
+  .links-two{
+    color: $color-grey-dark-2;
+    padding-right: 8px;
+  }
+  .text{
+     font-size: .8rem;
+     margin: 0;
+     padding: 0;
+  }
+}

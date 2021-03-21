@@ -1,0 +1,25 @@
+{% extends "posts/post_base.html" %}
+{% block post_content %}
+
+<section class="all-post">
+    <div class="bg-image">
+        <img src="/static/img/home1.jpg" class="bg-image__content" alt="photo">
+    </div>
+    <div class="u-center-text u-margin-bottom-big">
+    <h2 class="heading-secondary">All Posts</h2></div>
+    {% for post in allPosts  %}
+    <div class="row">
+        <div class="post-one">
+            <h3 class="heading-post">Article  by {{post.author}}</h3>
+            <h3 class="heading-title"><a href="/posts/r/{{ post.slug }}" class="links">{{ post.title }}</a></h3>
+            <div class="text">{{ post.created_at }}</div>
+            <p class="text-post">{{post.content| truncatechars:200}}</p>
+            <div class="more-link">
+            	<a href="/posts/r/{{ post.slug }}" role="button" class="links">Continue reading</a>
+            </div>
+        </div>
+    </div>
+        {% endfor %}
+</section>
+
+{% endblock %}
