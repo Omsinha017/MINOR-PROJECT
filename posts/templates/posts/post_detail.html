@@ -15,9 +15,9 @@
             <form action="{% url 'posts:like_post' post.sno %}" method="POST">
                 {% csrf_token %}
                 {% if liked %}
-                <button type="submit" name="post_sno" value="{{post.sno}}" >Unlike</button>
+                <button type="submit" name="post_sno" value="{{post.sno}}" ><i class="fa fa-thumbs-down" style="color: #777;"></i></button>
                 {% else %}
-                <button type="submit" name="post_sno" value="{{post.sno}}" >Like</button>
+                <button type="submit" name="post_sno" value="{{post.sno}}" ><i class="fa fa-thumbs-up" style="color: #777;"></i></button>
                 {% endif %}  -- {{total_likes}} Likes
             </form>
             <span > {{post.views}} views</span>

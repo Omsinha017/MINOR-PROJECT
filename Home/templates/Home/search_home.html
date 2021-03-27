@@ -1,108 +1,52 @@
 {% extends "base.html" %}
 {% block styling %}
 <style>
-    body {
-      margin: 0;
-      padding: 0;
-      font-family: 'Roboto', sans-serif;
-    }
-    ul {
-      list-style: none;
-    }
-    
-    .google #google_logo {
-      text-align: center;
-      display: block;
-      margin: 0 auto;
-      clear: both;
-      padding-top: 112px;
-      padding-bottom: 20px;
-    }
-    
-    .form {
-      text-align: center;
-    }
-    
-    #form-search { 
-      width: 450px;
-      line-height: 32px;
-      padding: 20px 10px;
-    }
-    
-    .form #form-search {
-      padding: 0 8px;
-    }
-    
-    #form-search:hover {
-      border-color: #e4e4e4;
-      padding-top: 0;
-    }
-    
-    .buttons {
-      text-align: center;
-      padding-top: 30px;
-      margin-bottom: 300px;
-    }
-    
-    @media screen and (max-width: 400px) {
-     
-     li.nav-links a {
-        display: none;
-      }
-      
-     #google_logo {
-       padding: 0;
-     }
-      
-     .buttons {
-       display: none;
-     }
-      
-     #form-search {
-       width: 80%;
-    
-     }
-    }
-    
-    @media screen and (max-width: 565px) {
-     
-      li.nav-links a {
-        display: none;
-      }
-      
-      
-     #google_logo {
-       padding: 0;
-     }
-      
-     .buttons {
-       display: none;
-     }
-      
-     #form-search {
-       width: 80%;
-    
-     }
-    }
+  form.example input[type=search] {
+  padding: 10px;
+  font-size: 17px;
+  border: 1px solid grey;
+  float: left;
+  width: 80%;
+  background: #f1f1f1;
+}
+
+form.example button {
+  float: left;
+  width: 20%;
+  padding: 10px;
+  background: #ad33ff;
+  color: white;
+  font-size: 17px;
+  border: 1px solid grey;
+  border-left: none;
+  cursor: pointer;
+}
+
+form.example button:hover {
+  background: #7a00cc;
+}
+
+form.example::after {
+  content: "";
+  clear: both;
+  display: table;
+}
 </style>
 {% endblock %}
-
-{% block head %}
-    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
-{% endblock %}
-
-
 {% block content %}
-<div class="search">
-    <a href="{% url 'Home:search_home' %}" id="site_logo"><img src="/static/img/White.svg" alt=""/></a>
+<section class="all-post">
+  <div class="bg-image">
+      <img src="/static/img/home1.jpg" class="bg-image__content" alt="photo">
   </div>
-  
-  <div class="form">  
-    <form action="/search">
-      <input class="form-control mr-sm-2" type="search" placeholder="Enter keyword of your choice" aria-label="Search" name="query" id="query">
-      <button class="btn btn-outline-success my-2 my-sm-0 " type="submit">Search</button>
+  <div class="u-center-text u-margin-bottom-big">
+    <div>
+      <a href="{% url 'Home:search_home' %}" id="site_logo"></a><img src="/static/img/Logo.svg" alt="Logo" style="height:170px;"></a>
+  </div></div>
+    
+    <form action="/search" class="example" style="margin:auto;max-width:300px;padding-bottom: 313px;">
+      <input type="search" placeholder="Search..." aria-label="Search" name="query" id="query">
+      <button type="submit"><i class="fa fa-search"></i></button>
     </form>
-  </div>   
-
+</section>
 {% endblock %}
 

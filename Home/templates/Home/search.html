@@ -1,10 +1,15 @@
 {% extends "posts/post_base.html" %}
 {% block post_content %}
 
-<div class="container my-3">
-    <h2>Searched Results </h2>
+<section class="all-post">
+    <div class="bg-image">
+        <img src="/static/img/home1.jpg" class="bg-image__content" alt="photo">
+    </div>
+    <div class="u-center-text u-margin-bottom-big">
+    <h2 class="heading-secondary">Searched Results</h2></div>
 
     {% if post|length < 1 %}
+    <div style="text-align: center;">
    <p>No search results</p>
     Your search query : <b>{{query}}</b> did not match any documents. <br>
     Suggestions:
@@ -14,21 +19,21 @@
    <li> Try fewer keywords.</li>
    <li> Try different keywords.</li>
     </ul>
+</div>
     {% endif %}
 
     {% for post in post  %}
-    <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 my-4 position-relative">
-        <div class="col p-4 d-flex flex-column position-static">
-            <strong class="d-inline-block mb-2 text-primary">Article  by {{post.author}}</strong>
-            <h3 class="mb-0">{{ post.title }}</h3>
-            <div class="mb-1 text-muted">{{ post.created_at }}</div>
-            <p class="card-text mb-auto">{{post.content| truncatechars:200}}</p>
-            <div class="my-2">
-            	<a href="/posts/r/{{ post.slug }}" role="button" class="btn btn-primary">Continue reading</a>
+    <div class="row">
+        <div class="post-one">
+            <h3 class="heading-post">Article  by {{post.author}}</h3>
+            <h3 class="heading-title">{{ post.title }}</h3>
+            <div class="text">{{ post.created_at }}</div>
+            <p class="text-post">{{post.content| truncatechars:200}}</p>
+            <div class="more-link">
+            	<a href="/posts/r/{{ post.slug }}" role="button" class="links">Continue reading</a>
             </div>
-
         </div>
     </div>
     {% endfor %}
-</div>
+</section>
 {% endblock %}
