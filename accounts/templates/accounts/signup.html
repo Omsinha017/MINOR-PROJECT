@@ -19,7 +19,7 @@
     transform: translate(-50%,-50%);
     box-sizing: border-box;
     border-radius: 30px;
-    padding : 5px 25px 0px 25px;
+    padding : 10px 30px 0px 25px;
 }
 
 
@@ -120,7 +120,8 @@ h2{
         <input type="password" class="form-control" id="pass2" name="pass2" placeholder="Enter your password again" required>
     </div>
     <div class="button_pos">
-    <button type="submit" class="btn btn-primary">Submit</button>
+    <button type="submit" class="btn btn-primary">Submit</button><br>
+    <a href="{% url 'accounts:login' %}">Have an account?</a>
     <p>OR</p>
     <a href="{% provider_login_url 'google' %}"><i class="fa fa fa-google-plus-square" style="font-size:36px;padding-right: 1rem;color:#777"></i></a>
     <a href="{% url 'social:begin' 'facebook' %}"><i class="fa fa-facebook-square" style="font-size:36px;padding-right: 1rem;color:#777"></i></a>

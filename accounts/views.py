@@ -15,14 +15,9 @@ def Signup(request):
                     context["reg_errors"].append("Email already in use!")
                 else:
                     email=request.POST['email']
-                    fname=request.POST['fname']
-                    lname=request.POST['lname']
                     pass1=request.POST['pass1']
-
                     myuser = User.objects.create_user(
                     username=email,
-                    first_name=fname,
-                    last_name=lname,
                     email=email,
                     password=pass1
                     )
