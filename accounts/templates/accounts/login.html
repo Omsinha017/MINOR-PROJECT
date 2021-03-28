@@ -8,7 +8,7 @@
 
 .loginbox{
     width: 320px;
-    height: 460px;
+    height: 500px;
     box-shadow: 0 3rem 6rem rgba(#000,.7);
     opacity: .75;
     background: white;
@@ -25,7 +25,6 @@
 
 h1{
     margin: 0;
-    padding: 0 0 20px;
     text-align: center;
     font-size: 25px;
 }
@@ -101,7 +100,7 @@ h1{
 <form method="POST" >
     {% csrf_token %}
     <p>Email</p>
-        <input type="text" name="email" placeholder="Enter Username">
+        <input type="text" name="email" placeholder="Enter Email">
     <p>Password</p>
         <input type="password" name="pass" placeholder="Enter Password">
         <div class="center-button">

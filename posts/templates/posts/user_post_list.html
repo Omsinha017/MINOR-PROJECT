@@ -4,7 +4,7 @@
 	<div class="bg-image">
         <img src="/static/img/home1.jpg" class="bg-image__content" alt="photo">
     </div>
-	<h1 class="heading-name">Hello! {{ user.username }}</h1>
+	<h1 class="heading-name">Hello! {% if user.first_name %}{{ user.first_name }}{% else %}{{ user.username }}{% endif %}</h1>
 	{% for post in posts %}
 	<div class="row">
 			<div class="post-one">
