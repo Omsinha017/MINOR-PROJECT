@@ -53,7 +53,7 @@ INSTALLED_APPS = [
     'posts',
     'Home',
 ]
-SITE_ID = 2
+SITE_ID = 4
 
 
 
