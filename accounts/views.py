@@ -14,7 +14,11 @@ def Signup(request):
                 if User.objects.filter(email=request.POST['email']).exists():
                     context["reg_errors"].append("Email already in use!")
                 else:
-                    f_name,l_name = request.POST['name'].split(" ")
+                    try:
+                        f_name,l_name = request.POST['name'].split(" ")
+                    except:
+                        f_name = request.POST['name'].split(" ")[0]
+                        l_name = ""
                     email=request.POST['email']
                     pass1=request.POST['pass1']
                     myuser = User.objects.create_user(
