@@ -33,7 +33,7 @@
                 {% csrf_token %}
                 <div class="form-group">
                     <label for="exampleInputEmail1">Post Comment </label>
-                    <input type="text" class="form-control" name="comment" placeholder="Enter comment here">
+                    <input type="text" class="form-control" name="comment" placeholder="Enter your Feedback here">
                 </div>
                 <input type="hidden" name="postSno" value="{{post.sno}}">
                 <input type="hidden" name="parentSno" value="">
@@ -62,7 +62,7 @@
                                 {% csrf_token %}
                                 <div class="form-group">
                                     <label for="comment">Post a reply </label>
-                                    <input type="text" class="form-control" name="comment" placeholder="Enter comment here">
+                                    <input type="text" class="form-control" name="comment" placeholder="Enter Feedback here">
                                     <input type="hidden" name="parentSno" value="{{comment.sno}}">
                                 </div>
                                 <input type="hidden" name="postSno" value="{{post.sno}}">

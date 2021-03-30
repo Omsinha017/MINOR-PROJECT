@@ -3,12 +3,12 @@
 <style>
     body{
     background-image: linear-gradient(to right bottom,#d699ff,#7a00cc);
-    height: 97.2vh;
+    height: 100vh;
 }
 
 .createbox{
     width: 500px;
-    height: 580px;
+    height: 650px;
     box-shadow: 0 3rem 6rem rgba(#000,.7);
     opacity: .75;
     background: white;
@@ -19,6 +19,7 @@
     transform: translate(-50%,-50%);
     box-sizing: border-box;
     padding: 70px 30px;
+    border-radius: 30px;
 }
 
 
@@ -27,6 +28,23 @@ h4{
     padding: 0 0;
     text-align: center;
     font-size: 30px;
+}
+
+textarea {
+  width: 100%;
+  padding: 12px;
+  color: #999;
+  font-size: 18px;
+  border-radius: 30px;
+  box-sizing: border-box;
+  background: transparent;
+  margin-top: 6px;
+  margin-bottom: 16px;
+  resize: vertical;
+  border-bottom: 2px solid #999;
+  outline:#999;
+  color: #999;
+  resize:none;
 }
 
 .createbox p{
@@ -92,25 +110,21 @@ h4{
 		<h4>Create New Post</h4>
 			<form method="POST">
 				{% csrf_token %}
-				<div class="form-group">
+				
 					<label for="name">Title</label>
 					<input type="text" class="form-control" id="title" name="title" aria-describedby="title">
-				</div>
 			
-				<div class="form-group">
+				
 					<label for="name">Author</label>
 					<input type="text" class="form-control" id="author" name="author" aria-describedby="name">
-				</div>
 			
-				<div class="form-group">
+				
 					<label for="name">Content</label>
-					<input type="text" class="form-control" id="content" name="content" aria-describedby="name">
-				</div>
+					<textarea type="text" class="form-control" id="content" name="content" aria-describedby="name" cols="30" rows="5"></textarea>
 			
-				<div class="form-group">
+				
 					<label for="name">Tags</label>
 					<input type="text" class="form-control" id="tags" name="tags" aria-describedby="name">
-				</div>
                 <div class="center-but">
 				<button type="submit" class="btn btn-primary">Submit</button>
             </div>
