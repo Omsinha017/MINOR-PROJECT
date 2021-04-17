@@ -29,10 +29,16 @@
     font-weight:700;
     margin-bottom: 0;
     text-transform:uppercase;
+    @include respond(phone){
+      font-size: 2rem;
+    }
   }
   .heading-title{
     font-size: 1.2rem;
     color: $color-grey-dark-2;
+    @include respond(phone){
+      font-size: 1.6rem;
+    }
   }
   .links{
     color: $color-grey-dark-2;
@@ -45,5 +51,8 @@
      font-size: .8rem;
      margin: 0;
      padding: 0;
+     @include respond(phone){
+       font-size: 1rem;
+     }
   }
 }

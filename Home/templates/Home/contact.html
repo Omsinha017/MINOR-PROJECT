@@ -3,7 +3,7 @@
 <style>
   input[type=text],input[type="email"],input[type="tel"], textarea {
   width: 100%;
-  padding: 12px;
+  padding: 8px;
   border: 1px solid #ccc;
   color: #999;
   font-size: 16px;
@@ -15,18 +15,19 @@
   resize: vertical;
 }
 
+
 textarea{
   resize: none;
 }
 
 body{
     background-image: linear-gradient(to right bottom,#d699ff,#7a00cc);
-    height: 97.2vh;
+    height: 98.5vh;
 }
 
 .contactbox{
     width: 90%;
-    height: 80%;
+    height: 98.5%;
     box-shadow: 0 3rem 6rem rgba(#000,.7);
     opacity: .75;
     background: white;
@@ -41,6 +42,36 @@ body{
     padding-right: 30px;
     padding-bottom: 250px;
     border-radius: 30px;
+}
+
+.contactbox__content {
+       height: 100%;
+       width: 100%;
+       object-fit:cover;
+   }
+
+   @media screen and (max-width: 300px) {   
+  .contactbox{
+      width: 70%;
+      height: 100%;
+  }
+  input[type=text],input[type="email"],input[type="tel"], textarea {
+    padding: 4px;
+    margin-top: 2px;
+    margin-bottom: 7px;
+  }
+}
+@media screen and (max-width: 600px) {   
+  .contactbox{
+      width: 80%;
+      height: 90%;
+  }
+  input[type=text],input[type="email"],input[type="tel"], textarea {
+    padding: 4px;
+    margin-top: 2px;
+    margin-bottom: 7px;
+  }
+
 }
 
 
@@ -59,11 +90,11 @@ h3{
 
 .contactbox button[type="submit"]
 {
-   margin-top: 10px;
+   /* margin-top: 10px; */
     border: none;
     width: 100px;
     outline: none;
-    height: 40px;
+    height: 35px;
     background-image: linear-gradient(to right bottom,#d699ff,#7a00cc);
     color: #fff;
     font-size: 18px;
@@ -80,6 +111,7 @@ h3{
 {% block content %}
 
 <div class="contactbox">
+  <div class="contactbox__content">
 <h3>Contact Admin!!</h3>
 <form method="POST">
 {% csrf_token %}
@@ -98,6 +130,7 @@ h3{
 
   <button type="submit">Submit</button>
 </form>
+</div>
 </div>
 
 {% endblock content %}

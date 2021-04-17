@@ -8,7 +8,7 @@
 
 .createbox{
     width: 500px;
-    height: 650px;
+    height: 550px;
     box-shadow: 0 3rem 6rem rgba(#000,.7);
     opacity: .75;
     background: white;
@@ -18,10 +18,51 @@
     position: absolute;
     transform: translate(-50%,-50%);
     box-sizing: border-box;
-    padding: 70px 30px;
+   padding-left: 40px;
+   padding-right: 40px;
+   padding-top: 10px;
     border-radius: 30px;
 }
 
+@media screen and (max-width: 600px) {   
+  .createbox{
+      width: 90%;
+      height: 90%;
+  }
+  textarea{
+    margin-top: 1px;
+  margin-bottom: 5px;
+  }
+  .center-but{
+    padding-top: 3px;
+  }
+}
+@media screen and (max-width: 300px) {   
+  .createbox{
+      width: 90%;
+      height: 90%;
+  }
+  textarea{
+    margin-top: 1px;
+  margin-bottom: 5px;
+  }
+  .center-but{
+    padding-top: 3px;
+  }
+}
+@media screen and (max-width: 900px) {   
+  .createbox{
+      width: 90%;
+      height: 90%;
+  }
+  textarea{
+    margin-top: 1px;
+  margin-bottom: 5px;
+  }
+  .center-but{
+    padding-top: 3px;
+  }
+}
 
 h4{
     margin: 0;
@@ -32,14 +73,14 @@ h4{
 
 textarea {
   width: 100%;
-  padding: 12px;
+  /* padding: 12px; */
   color: #999;
   font-size: 18px;
   border-radius: 30px;
   box-sizing: border-box;
   background: transparent;
-  margin-top: 6px;
-  margin-bottom: 16px;
+  margin-top: 3px;
+  margin-bottom: 8px;
   resize: vertical;
   border-bottom: 2px solid #999;
   outline:#999;
@@ -55,7 +96,7 @@ textarea {
 
 .createbox input{
     width: 100%;
-    margin-bottom: 10px;
+    /* margin-bottom: 10px; */
 	padding-left: 5px;
 	padding-right: 5px;
 }
@@ -65,22 +106,22 @@ textarea {
     border-bottom: 2px solid #999;
     background: transparent;
     outline:#999;
-    height: 40px;
+    height: 35px;
     color: #999;
     font-size: 16px;
     border-radius: 30px;
 }
 .center-but{
     text-align: center;
-    padding: 10px;
-    padding-top: 30px;
+    padding-top: 10px;
+    padding-bottom: 2px;
 }
 .createbox button[type="submit"]
 {
     border: none;
     width: 100px;
     outline: none;
-    height: 40px;
+    height: 35px;
     background-image: linear-gradient(to right bottom,#d699ff,#7a00cc);
     color: #fff;
     font-size: 18px;
@@ -126,7 +167,7 @@ textarea {
 					<label for="name">Tags</label>
 					<input type="text" class="form-control" id="tags" name="tags" aria-describedby="name">
                 <div class="center-but">
-				<button type="submit" class="btn btn-primary">Submit</button>
+				<button type="submit">Submit</button>
             </div>
 			</form>
 	</div>
