@@ -1,37 +1,42 @@
 from django.contrib import messages
 from posts.models import Post, PostComment
 from django.shortcuts import render, redirect, get_object_or_404
-from posts.templatetags import extras
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 
 def AllPosts(request):
-    allPosts = Post.objects.all().order_by('-created_at')
-    context = {
-        'allPosts' : allPosts
-    }
-    return render(request,"posts/allpost.html",context)
+    if request.user.is_authenticated:
+        allPosts = Post.objects.all().order_by('-created_at')
+        context = {
+            'allPosts' : allPosts
+        }
+        return render(request,"posts/allpost.html",context)
+    else:
+        return redirect("accounts:login")
 
 def PostDetail(request, slug):
-    post = Post.objects.filter(slug=slug).first()
-    post.views = post.views +1
-    total_likes = post.total_likes()
-    post.save()
+    if request.user.is_authenticated:
+        post = Post.objects.filter(slug=slug).first()
+        post.views = post.views +1
+        total_likes = post.total_likes()
+        post.save()
 
-    liked = False
-    if post.likes.filter(id = request.user.id).exists():
-        liked = True
+        liked = False
+        if post.likes.filter(id = request.user.id).exists():
+            liked = True
 
-    comments= PostComment.objects.filter(post=post, parent=None)
-    replies= PostComment.objects.filter(post=post).exclude(parent=None)
-    replyDict={}
-    for reply in replies:
-        if reply.parent.sno not in replyDict.keys():
-            replyDict[reply.parent.sno]=[reply]
-        else:
-            replyDict[reply.parent.sno].append(reply)
-    context={'post':post, 'comments': comments, 'user': request.user, 'replyDict': replyDict, 'total_likes': total_likes, 'liked': liked}
-    return render(request,"posts/post_detail.html",context)
+        comments= PostComment.objects.filter(post=post, parent=None)
+        replies= PostComment.objects.filter(post=post).exclude(parent=None)
+        replyDict={}
+        for reply in replies:
+            if reply.parent.sno not in replyDict.keys():
+                replyDict[reply.parent.sno]=[reply]
+            else:
+                replyDict[reply.parent.sno].append(reply)
+        context={'post':post, 'comments': comments, 'user': request.user, 'replyDict': replyDict, 'total_likes': total_likes, 'liked': liked}
+        return render(request,"posts/post_detail.html",context)
+    else :
+        return redirect("accounts:login")
 
 def UserPosts(request):
     if request.user.is_authenticated:
@@ -41,6 +46,8 @@ def UserPosts(request):
             'posts' : qs
         }
         return render(request,"posts/user_post_list.html",context)
+    else :
+        return redirect("accounts:login")
 
 
 def CreatePost(request):
@@ -58,7 +65,10 @@ def CreatePost(request):
                 obj.save()
                 messages.success(request, "Your Post have been successfully Created and Posted")
                 return redirect("posts:all")
-    return render(request,'posts/post_create_form.html')
+        return render(request,'posts/post_create_form.html')
+    else :
+        return redirect("accounts:login")
+
 
 
 def delete_post(request,id=None):
@@ -67,6 +77,9 @@ def delete_post(request,id=None):
         post_to_delete.delete()
         messages.success(request, "Your Post have been successfully Deleted")
         return redirect("posts:all")
+    else :
+        return redirect("accounts:login")
+
 
 
 def post_Comment(request):

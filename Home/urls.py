@@ -7,5 +7,5 @@ urlpatterns = [
     path('', HomePage, name='home'),
     path('about', about, name="about"),
     path('contact', contact, name="contact"),
-    path('search/', search_home, name="search_home"),
+    path('search', search_home, name="search_home"),
 ]

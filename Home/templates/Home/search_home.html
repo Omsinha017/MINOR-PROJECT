@@ -33,6 +33,7 @@ form.example::after {
 }
 </style>
 {% endblock %}
+
 {% block content %}
 <section class="all-post">
   <div class="bg-image">
@@ -40,8 +41,9 @@ form.example::after {
   </div>
   <div class="u-center-text u-margin-bottom-big">
     <div>
-      <a href="{% url 'Home:search_home' %}" id="site_logo"></a><img src="/static/img/Logo.svg" alt="Logo" style="height:170px;"></a>
-  </div></div>
+      <a href="{% url 'Home:search_home' %}" id="site_logo"><img src="/static/img/Logo.svg" alt="Logo" style="height:170px;"></a>
+  </div>
+</div>
     
     <form action="/search" class="example" style="margin:auto;max-width:300px;padding-bottom: 143px;">
       <input type="search" placeholder="Search..." aria-label="Search" name="query" id="query">
